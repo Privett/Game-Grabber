@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = "https://cors-anywhere.herokuapp.com/https://api.gamegrabber.xyz/free-games";
     const gameCardsContainer = document.getElementById('game-cards-container');
 
+    if (!gameCardsContainer) {
+        console.error('Game cards container not found!');
+        return;
+    }
+
     console.log('Fetching games from API:', apiUrl);
 
     fetch(apiUrl)
@@ -33,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameTitle.textContent = game.title;
 
                 const gameDescription = document.createElement('p');
-                gameDescription.textContent = game.description;
+                gameDescription.textContent = game.description || 'No description available';
 
                 const platform = document.createElement('div');
                 platform.classList.add('platform');
@@ -49,10 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameCard.appendChild(gameImage);
                 gameCard.appendChild(gameTitle);
                 gameCard.appendChild(gameDescription);
-                gameCard.appendChild(platform)
+                gameCard.appendChild(platform);
 
                 gameCardsContainer.appendChild(gameCard);
             });
+
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.classList.remove('light-theme', 'dark-theme');
+            document.documentElement.classList.add(`${currentTheme}-theme`);
 
             const gameCards = document.querySelectorAll('.game-card');
             gameCards.forEach(card => {

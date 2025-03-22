@@ -1,4 +1,8 @@
-body {
+* {
+    box-sizing: border-box;
+}
+
+:where(html) {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -9,6 +13,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background-color: transparent;
 }
 
 header {
@@ -41,8 +46,37 @@ nav ul li a {
     transition: background-color 0.3s, color 0.3s;
 }
 
-nav ul li a:hover {
-    background-color: #ddd;
+:where(html).light-theme nav ul li a:hover {
+    background-color: #e6e6e6;
+    color: #333;
+}
+
+:where(html).dark-theme nav ul li a:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+    position: relative;
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+}
+
+:where(html).light-theme nav ul li a.active::after {
+    background-color: #0056b3;
+}
+
+:where(html).dark-theme nav ul li a.active::after {
+    background-color: #66b0ff;
 }
 
 section {
@@ -56,12 +90,12 @@ footer {
     margin-top: 20px;
 }
 
-body.light-theme {
+:where(html).light-theme {
     background-color: #ffffff;
     color: #000000;
 }
 
-body.dark-theme {
+:where(html).dark-theme {
     background-color: #121212;
     color: #ffffff;
 }
@@ -83,15 +117,13 @@ body.dark-theme {
     padding: 20px;
     margin: 20px;
     width: 300px;
-    height: 300px;
+    height: 400px;
     display: inline-block;
     vertical-align: top;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     position: relative;
     z-index: 1;
+    cursor: pointer;
 }
 
 .game-card:hover {
@@ -197,13 +229,13 @@ body.dark-theme {
     margin-right: 8px;
 }
 
-body.light-theme .creator-section {
+:where(html).light-theme .creator-section {
     background-color: #f9f9f9;
     border-color: #ddd;
 }
 
-body.light-theme .creator-section h2,
-body.light-theme .creator-description p {
+:where(html).light-theme .creator-section h2,
+:where(html).light-theme .creator-description p {
     color: #000;
 }
 
@@ -214,6 +246,16 @@ body.light-theme .creator-description p {
     color: #888;
 }
 
-body.light-theme .platform {
+:where(html).light-theme .platform {
     color: #666;
+}
+
+:where(html).light-theme .game-card {
+    background-color: #f9f9f9;
+    border-color: #ddd;
+}
+
+:where(html).light-theme .game-card h3,
+:where(html).light-theme .game-card p {
+    color: #000;
 }

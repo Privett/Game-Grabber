@@ -6,8 +6,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Grabber</title>
+    <script>
+        (function() {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.className = '';
+            document.documentElement.classList.add(`${currentTheme}-theme`);
+        })();
+    </script>
 </head>
-<body class="dark-theme">
+<body>
     <div class="container">
         <header>
             <h1>Game Grabber</h1>
@@ -15,7 +22,7 @@
         </header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="games.html">Games</a></li>
             </ul>
         </nav>
@@ -42,7 +49,7 @@
             </div>
         </section>
         <footer>
-            <p>&copy; 2025 Game Grabber. All rights reserved.</p>
+            <p>© 2025 Game Grabber. All rights reserved.</p>
             <a href="https://github.com/Privett" target="_blank" class="github-button">
                 <i class="fab fa-github"></i> My GitHub
             </a>
