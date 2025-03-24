@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = "https://api.gamegrabber.xyz/free-games?cors=https://gamegrabber.xyz/";
+    const apiUrl = "https://api.gamegrabber.xyz/free-games/cors";
     const gameCardsContainer = document.getElementById('game-cards-container');
 
     if (!gameCardsContainer) {
